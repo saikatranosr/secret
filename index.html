@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Secret Messager - Saikat</title>
+    <style type="text/css" media="all">
+        body{
+            height: 100vh;
+            background: white;
+        }
+        .con{
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #main{
+            border: 0.5px solid #8a8a8a;
+            border-radius: 4px;
+            font-size: 20px;
+            font-family: Arial, Sans-Serif;
+            width: 90vmin;
+            padding: 10vmin 10vw;
+            box-shadow: 0 0 7px 2px lightgray;
+            background: linear-gradient(rgb(255,235,235), #fbd8ff)
+        }   
+    </style>
+</head>
+<body>
+    <div class="con">
+      <div id="main">
+          main-content
+      </div>  
+    </div>
+    <script type="text/javascript" charset="utf-8">
+    let _url = window.location.href
+        _start = _url.indexOf("?") + 1
+        _end = _url.length
+        _content = String(_url.slice(_start, _end))
+        if (_content == "" || _content == _url){main.innerHTML = "Noting to see here...."}
+        else{
+    function fromBinary(encoded) {
+  binary = atob(encoded)
+  const bytes = new Uint8Array(binary.length);
+  for (let i = 0; i < bytes.length; i++) {
+    bytes[i] = binary.charCodeAt(i);
+  }
+  return String.fromCharCode(...new Uint16Array(bytes.buffer));
+}
+
+// our previous Base64-encoded string
+let decoded = fromBinary(_content)// "✓ à la mode"
+main.innerHTML = decoded
+        }
+    </script>
+</body>
+</html>
