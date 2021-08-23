@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript" charset="utf-8">
+        function toBinary(string) {
+  const codeUnits = new Uint16Array(string.length);
+  for (let i = 0; i < codeUnits.length; i++) {
+    codeUnits[i] = string.charCodeAt(i);
+  }
+  return btoa(String.fromCharCode(...new Uint8Array(codeUnits.buffer)));
+}
+
+// a string that contains characters occupying > 1 byte
+let encoded = toBinary(prompt()) // "EycgAOAAIABsAGEAIABtAG8AZABlAA=="
+console.log(encoded)
+_win_url = "http://localhost:8158/index.html?" + encoded
+function textToClipboard (text) {
+    var dummy = document.createElement("textarea");
+    document.body.appendChild(dummy);
+    dummy.value = text;
+    dummy.select();
+    document.execCommand("copy");
+    document.body.removeChild(dummy);
+   // alert(text + "copied")
+}
+document.body.innerHTML = _win_url
+textToClipboard(_win_url)
+  </script>
+</body>
+</html>
